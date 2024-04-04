@@ -18,3 +18,28 @@
   font-family: 'Manrope Bold';
   src: url('@/assets/fonts/manrope-bold.otf');
 }
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('@/assets/fonts/poppins-regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins Medium';
+  src: url('@/assets/fonts/poppins-medium.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins Semibold';
+  src: url('@/assets/fonts/poppins-semibold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('@/assets/fonts/montserrat-bold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat Semibold';
+  src: url('@/assets/fonts/montserrat-semibold.ttf');
+}

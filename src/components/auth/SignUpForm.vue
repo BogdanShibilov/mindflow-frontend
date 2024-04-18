@@ -1,20 +1,54 @@
 <template>
-  <form action="">
+  <form @submit.prevent="submitForm">
     <div class="input-wrapper">
-      <label for="">Full name</label>
-      <input type="text" placeholder="Full name" />
+      <label for="name">Full name</label>
+      <input id="name" type="text" placeholder="Full name" v-model.trim="name" />
     </div>
     <div class="input-wrapper">
-      <label for="">Email address</label>
-      <input type="text" placeholder="Email address" />
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="Email address" v-model.trim="email" />
     </div>
     <div class="input-wrapper">
-      <label for="">Password</label>
-      <input type="text" placeholder="Enter password" />
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter password" v-model.trim="password" />
     </div>
-    <button>Continue</button>
+    <button>Продолжить</button>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      name: ''
+    }
+  },
+  methods: {
+    async submitForm() {
+      if (
+        this.email === '' ||
+        !this.email.includes('@') ||
+        this.password.length < 5 ||
+        this.name === ''
+      ) {
+        console.log('Invalid credentials')
+        return
+      }
+
+      await this.$store.dispatch('signup', {
+        email: this.email,
+        password: this.password,
+        name: this.name
+      })
+
+      const redirectUrl = '/updateuserdetails'
+      this.$router.replace(redirectUrl)
+    }
+  }
+}
+</script>
 
 <style scoped>
 form {

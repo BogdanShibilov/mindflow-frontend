@@ -12,7 +12,7 @@
         </button>
         <TextBetweenLines text="Or login with email"></TextBetweenLines>
         <LoginForm></LoginForm>
-        <span>Don't have an account? <a href="">Sign up</a></span>
+        <span>Don't have an account? <router-link to="signup">Sign up</router-link></span>
       </div>
     </div>
   </main>
@@ -96,5 +96,9 @@ main > * {
 
 #google-signup > img {
   margin-right: 13px;
+}
+
+button {
+  cursor: pointer;
 }
 </style>

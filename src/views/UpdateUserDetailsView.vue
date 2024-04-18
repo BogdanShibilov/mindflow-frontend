@@ -3,36 +3,23 @@
     <div id="avatars-area">
       <TheAvatars></TheAvatars>
     </div>
-    <div id="signup-form-area">
+    <div id="tell-about-yourself">
       <div>
-        <h1>Sign up</h1>
-        <button id="google-signup">
-          <img src="../assets/icons/icon_google.svg" />
-          Sign Up with Google
-        </button>
-        <TextBetweenLines text="Or sign up with email"></TextBetweenLines>
-        <SignUpForm></SignUpForm>
-        <span>Already have an account? <router-link to="login">Login</router-link></span>
-        <span id="terms-text"
-          >By clicking 'Continue' you acknowledge that you have read and accept the
-          <router-link to="">Terms of Service</router-link> and
-          <router-link to="">Privacy Policy</router-link></span
-        >
+        <h1>Расскажите о себе</h1>
+        <TellAboutYourselfForm></TellAboutYourselfForm>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import SignUpForm from '../components/auth/SignUpForm.vue'
-import TextBetweenLines from '../components/auth/TextBetweenLines.vue'
 import TheAvatars from '../components/auth/TheAvatars.vue'
+import TellAboutYourselfForm from '../components/auth/TellAboutYourselfForm.vue'
 
 export default {
   components: {
-    SignUpForm,
-    TextBetweenLines,
-    TheAvatars
+    TheAvatars,
+    TellAboutYourselfForm
   }
 }
 </script>
@@ -56,30 +43,34 @@ main > * {
   background-color: #1e1bb3;
 }
 
-#signup-form-area {
+#tell-about-yourself {
   width: 56%;
   display: flex;
   justify-content: center;
 }
 
-#signup-form-area > div {
-  width: 50%;
+#tell-about-yourself > div {
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#signup-form-area > div > * {
+#tell-about-yourself > div > h1 {
+  align-self: flex-start;
+}
+
+#tell-about-yourself > div > * {
   margin: 11px 0px;
 }
 
-#signup-form-area > div > span {
+#tell-about-yourself > div > span {
   color: rgba(20, 24, 30, 0.7);
   align-self: flex-start;
 }
 
-#signup-form-area > div > span > a {
+#tell-about-yourself > div > span > a {
   color: #4640de;
   text-decoration: none;
   font-family: 'Manrope Semibold';
@@ -101,5 +92,9 @@ main > * {
 
 #google-signup > img {
   margin-right: 13px;
+}
+
+button {
+  cursor: pointer;
 }
 </style>

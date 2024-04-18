@@ -1,16 +1,43 @@
 <template>
-  <form action="">
+  <form @submit.prevent="submitForm">
     <div class="input-wrapper">
-      <label for="">Email address</label>
-      <input type="text" placeholder="Email address" />
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="Email address" v-model.trim="email" />
     </div>
     <div class="input-wrapper">
-      <label for="">Password</label>
-      <input type="text" placeholder="Enter password" />
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter password" v-model.trim="password" />
     </div>
-    <button>Continue</button>
+    <button>Продолжить</button>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    async submitForm() {
+      if (this.email === '' || !this.email.includes('@') || this.password.length < 5) {
+        console.log('Invalid credentials')
+        return
+      }
+
+      await this.$store.dispatch('login', {
+        email: this.email,
+        password: this.password
+      })
+
+      const redirectUrl = '/experts'
+      this.$router.replace(redirectUrl)
+    }
+  }
+}
+</script>
 
 <style scoped>
 form {
@@ -54,5 +81,9 @@ form > button {
   color: white;
   font-size: 16px;
   font-family: 'Manrope Bold';
+}
+
+button {
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="../../assets/images/mindflow-logo.png" srcset="" />
+    <router-link to="/"><img src="../../assets/images/mindflow-logo.png" /></router-link>
     <span id="search-wrapper">
       <input type="search" name="" id="" placeholder="Search" />
     </span>
@@ -11,7 +11,7 @@
         name="Заявка"
         v-if="isBecomeExpertFormVisible"
       >
-        <BecomeExpertForm></BecomeExpertForm>
+        <BecomeExpertForm @closeWindow="switchBecomeExpertForm"></BecomeExpertForm>
       </ModalWindowBase>
       <img
         class="profilePic"
@@ -20,6 +20,7 @@
       />
       <div v-if="isPopUpVisible" id="pop-up-menu">
         <span @click="logout">Log out</span>
+        <span @click="redirectToUpdateUserDetails">Обновить личные данные</span>
       </div>
     </div>
     <div id="logged-out" v-else>
@@ -41,7 +42,8 @@ export default {
   data() {
     return {
       isPopUpVisible: false,
-      isBecomeExpertFormVisible: false
+      isBecomeExpertFormVisible: false,
+      myToken: null
     }
   },
   computed: {
@@ -58,6 +60,10 @@ export default {
     },
     switchBecomeExpertForm() {
       this.isBecomeExpertFormVisible = !this.isBecomeExpertFormVisible
+    },
+    redirectToUpdateUserDetails() {
+      const redirectUrl = '/updateuserdetails'
+      this.$router.replace(redirectUrl)
     }
   }
 }

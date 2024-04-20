@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 #background {
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 0px;
   width: 100vw;

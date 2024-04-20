@@ -3,6 +3,7 @@ import SignUpView from '@/views/SignUpView.vue'
 import LoginView from '@/views/LoginView.vue'
 import ExpertsView from '@/views/ExpertsView.vue'
 import UpdateUserDetailsView from '@/views/UpdateUserDetailsView.vue'
+import ExpertView from '@/views/ExpertView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,12 @@ const router = createRouter({
       path: '/updateuserdetails',
       name: 'updateuserdetails',
       component: UpdateUserDetailsView
+    },
+    {
+      path: '/experts/:id',
+      name: 'expert',
+      component: ExpertView,
+      props: true
     }
   ]
 })

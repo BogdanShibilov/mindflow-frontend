@@ -1,29 +1,66 @@
 <template>
   <div id="item-wrapper">
     <div id="expert-info">
-      <p id="price-tag">5000 тг</p>
+      <p id="price-tag">{{ price }} тг</p>
       <div id="name-and-speciality">
-        <h3>Vivienne Sung</h3>
-        <p>Product Designer</p>
+        <h3>{{ name }}</h3>
+        <p>{{ field }}</p>
       </div>
       <div id="expert-experience">
         <h3>Опыт:</h3>
         <p>
-          Sam worked across a mix of Senior and Staff product manager roles, bringing in extremely
-          high quality candidates across the board, several of which we hired. Sam was an absolute
+          {{ experience }}
         </p>
       </div>
-      <a href="">Открыть профиль</a>
+      <router-link :to="profileLink">Открыть профиль</router-link>
     </div>
     <div id="img-wrapper">
-      <img src="../../assets/images/expert_image_example.png" alt="" srcset="" />
+      <img src="../../assets/images/person_image_placeholder.png" />
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  props: ['id', 'price', 'experience'],
+  data() {
+    return {
+      name: '',
+      field: ''
+    }
+  },
+  computed: {
+    profileLink() {
+      return this.$route.path + '/' + this.id
+    }
+  },
+  async created() {
+    let userUrl = 'http://localhost:8080/api/v1/user/' + this.id
+    let res = await fetch(userUrl).catch(console.error)
+    const data = await res.json()
+    this.name = data.name
+
+    let userDetailsUrl = 'http://localhost:8080/api/v1/user/userdetails/' + this.id
+    res = await fetch(userDetailsUrl).catch(console.error)
+    const userDetailsData = await res.json()
+    this.field = userDetailsData.ProfessionalField
+  }
+}
+</script>
+
 <style scoped>
+#img-wrapper {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+#img-wrapper img {
+  border-radius: 50px;
+}
+
 #item-wrapper {
   display: flex;
+  justify-content: space-between;
   background-color: #f8f8f6;
   padding: 40px;
   border-radius: 32px;

@@ -1,12 +1,11 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form v-if="!alreadySubmitted" @submit.prevent="submitForm">
     <div class="input-wrapper">
       <label for="yourhelp">С чем вы можете помочь?</label>
       <textarea
         name="yourhelp"
         id="yourhelp"
-        rows="100"
-        cols="50"
+        rows="5"
         placeholder="Введите текст"
         v-model="yourhelp"
       ></textarea>
@@ -21,20 +20,68 @@
       платформой</span
     >
   </form>
+  <div id="already-submitted" v-else>
+    <p>Спасибо! В ближайшее время мы с вами свяжемся!</p>
+    <button @click="$emit('closeWindow')">Закрыть</button>
+  </div>
 </template>
 
 <script>
 export default {
+  emits: ['closeWindow'],
   data() {
     return {
-      yourhelp: '',
-      price: null
+      yourhelp: null,
+      price: null,
+      myToken: null,
+      alreadySubmitted: false
     }
   },
   methods: {
-    submitForm() {
-      console.log(this.yourhelp)
-      console.log(this.price)
+    async submitForm() {
+      const becomeExpertUrl = 'http://localhost:8080/api/v1/expert'
+
+      if (!this.yourhelp || !this.price) {
+        alert('Wrong form data')
+        return
+      }
+
+      let becomeExpertRes = await fetch(becomeExpertUrl, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + this.$store.getters.token
+        },
+        body: JSON.stringify({
+          chargePerHour: this.price,
+          expertiseAtDescription: this.yourhelp
+        })
+      }).catch(console.error)
+
+      if (!becomeExpertRes.ok) {
+        alert('failed')
+      }
+      this.alreadySubmitted = true
+    }
+  },
+  async created() {
+    let token = this.$store.getters.token
+    let base64Url = token.split('.')[1]
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+    let jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        })
+        .join('')
+    )
+    this.myToken = JSON.parse(jsonPayload)
+    let myid = this.myToken.UserUuid
+    let expertInfoUrl = 'http://localhost:8080/api/v1/expert/' + myid
+    let expertInfoRes = await fetch(expertInfoUrl).catch()
+    if (expertInfoRes.ok) {
+      this.alreadySubmitted = true
     }
   }
 }
@@ -56,11 +103,13 @@ input {
   border-radius: 6px;
 }
 
-form {
+form,
+#already-submitted {
   margin: 15px 10px 0px 10px;
 }
 
-form {
+form,
+#already-submitted {
   width: 100%;
 }
 
@@ -77,7 +126,6 @@ form {
 
 .input-wrapper > input,
 .input-wrapper > textarea {
-  height: 50px;
   width: 100%;
   padding: 12px 16px;
   color: #202430;
@@ -86,12 +134,17 @@ form {
   border: 1px solid #d6ddeb;
 }
 
+.input-wrapper > input {
+  height: 50px;
+}
+
 .input-wrapper > input::placeholder,
 .input-wrapper > textarea::placeholder {
   color: #a8adb7;
 }
 
-form > button {
+form > button,
+#already-submitted > button {
   display: block;
   cursor: pointer;
   margin: auto;
@@ -103,6 +156,13 @@ form > button {
   color: white;
   font-size: 16px;
   font-family: 'Manrope Bold';
+}
+
+#already-submitted p {
+  font-family: 'Poppins Regular';
+  font-size: 24px;
+  color: #4f4f4f;
+  margin: 10px;
 }
 
 #agree {

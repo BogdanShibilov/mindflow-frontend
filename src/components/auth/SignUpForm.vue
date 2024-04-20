@@ -33,11 +33,11 @@ export default {
         this.password.length < 5 ||
         this.name === ''
       ) {
-        console.log('Invalid credentials')
+        alert('Invalid credentials')
         return
       }
 
-      await this.$store.dispatch('signup', {
+      this.$store.dispatch('signup', {
         email: this.email,
         password: this.password,
         name: this.name

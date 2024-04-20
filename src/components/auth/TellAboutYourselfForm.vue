@@ -28,9 +28,12 @@ export default {
   methods: {
     submitForm() {
       if (this.$store.getters.isAuthenticated) {
-        let updateUserDetailsUrl = 'http://localhost:8080//api/v1/user/updatedetails'
+        let updateUserDetailsUrl = 'http://localhost:8080/api/v1/user/updatemydetails'
         fetch(updateUserDetailsUrl, {
           method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + this.$store.getters.token
+          },
           body: JSON.stringify({
             phoneNumber: this.phone,
             professionalField: this.field,
@@ -44,12 +47,6 @@ export default {
         const redirectUrl = '/login'
         this.$router.replace(redirectUrl)
       }
-    }
-  },
-  beforeCreate() {
-    if (!this.$store.getters.isAuthenticated) {
-      const redirectUrl = '/login'
-      this.$router.replace(redirectUrl)
     }
   }
 }

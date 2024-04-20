@@ -76,24 +76,6 @@ main > * {
   font-family: 'Manrope Semibold';
 }
 
-#terms-text {
-  font-size: 14px;
-}
-
-#google-signup {
-  width: 100%;
-  height: 50px;
-  border: solid #ccccf5 1px;
-  background-color: white;
-  color: #4640de;
-  font-family: 'Manrope Bold';
-  font-size: 16px;
-}
-
-#google-signup > img {
-  margin-right: 13px;
-}
-
 button {
   cursor: pointer;
 }

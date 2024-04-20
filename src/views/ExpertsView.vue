@@ -5,7 +5,13 @@
       <ExpertsFilter></ExpertsFilter>
     </div>
     <div id="experts-area">
-      <ExpertItem></ExpertItem>
+      <span v-for="expert in experts" :key="expert.UserUuid">
+        <ExpertItem
+          :id="expert.UserUuid"
+          :price="expert.ChargePerHour"
+          :experience="expert.ExpertiseAtDescription"
+        ></ExpertItem>
+      </span>
     </div>
   </main>
   <TheFooter></TheFooter>
@@ -23,6 +29,17 @@ export default {
     TheFooter,
     ExpertsFilter,
     ExpertItem
+  },
+  data() {
+    return {
+      experts: null
+    }
+  },
+  async created() {
+    let expertsUrl = 'http://localhost:8080/api/v1/expert'
+    let res = await fetch(expertsUrl).catch(console.error)
+    const data = await res.json()
+    this.experts = data
   }
 }
 </script>

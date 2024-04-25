@@ -19,7 +19,7 @@
     <img id="avatar7" src="../../assets/images/avatars/avatar7.png" />
   </div>
   <div id="mindflow-wrapper">
-    <router-link to="/"><img src="../../assets//images/mindflow-logo.png" /></router-link>
+    <router-link to="/"><img src="../../assets/images/mindflow-logo.png" /></router-link>
   </div>
 </template>
 

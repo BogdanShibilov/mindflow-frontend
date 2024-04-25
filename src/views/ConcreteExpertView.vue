@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <TheHeader id="header" />
-    <ExpertList id="expert-list" experts="this.experts" />
+    <ConcreteExpert id="concrete-expert" />
     <TheFooter id="footer" />
   </div>
 </template>
@@ -9,13 +9,13 @@
 <script>
 import TheHeader from '../components/shared/TheHeader.vue'
 import TheFooter from '../components/shared/TheFooter.vue'
-import ExpertList from '../components/expert/ExpertList.vue'
+import ConcreteExpert from '@/components/expert/ConcreteExpert.vue'
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    ExpertList
+    ConcreteExpert
   }
 }
 </script>
@@ -29,14 +29,14 @@ export default {
   row-gap: 4vh;
 }
 
+#concrete-expert {
+  grid-row: 2;
+  grid-column: 2;
+}
+
 #header {
   grid-row: 1;
   grid-column: 1 / 4;
-}
-
-#expert-list {
-  grid-row: 2;
-  grid-column: 2;
 }
 
 #footer {

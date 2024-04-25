@@ -6,9 +6,11 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style>
-@font-face {
-  font-family: 'Manrope-VariableFont_wght';
-  src: url('@/assets/fonts/Manrope-VariableFont_wght.ttf');
+<script>
+export default {
+  created() {
+    this.$store.dispatch('trySignIn')
+    console.log('is logged in: ' + this.$store.getters.isAuthenticated)
+  }
 }
-</style>
+</script>

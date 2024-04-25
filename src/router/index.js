@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SignUpView from '@/views/SignUpView.vue'
-import LoginView from '@/views/LoginView.vue'
-import ExpertsView from '@/views/ExpertsView.vue'
-import UpdateUserDetailsView from '@/views/UpdateUserDetailsView.vue'
-import ExpertView from '@/views/ExpertView.vue'
+import SignUpView from '../views/SignUpView.vue'
+import SignInView from '../views/SignInView.vue'
+import SignOutView from '../views/SignOutView.vue'
+import ExpertsView from '../views/ExpertsView.vue'
+import ConcreteExpertView from '@/views/ConcreteExpertView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,9 +19,14 @@ const router = createRouter({
       component: SignUpView
     },
     {
-      path: '/login',
-      name: 'login',
-      component: LoginView
+      path: '/signin',
+      name: 'signin',
+      component: SignInView
+    },
+    {
+      path: '/signout',
+      name: 'signout',
+      component: SignOutView
     },
     {
       path: '/experts',
@@ -29,15 +34,9 @@ const router = createRouter({
       component: ExpertsView
     },
     {
-      path: '/updateuserdetails',
-      name: 'updateuserdetails',
-      component: UpdateUserDetailsView
-    },
-    {
       path: '/experts/:id',
       name: 'expert',
-      component: ExpertView,
-      props: true
+      component: ConcreteExpertView
     }
   ]
 })

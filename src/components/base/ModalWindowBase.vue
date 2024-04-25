@@ -11,9 +11,7 @@
 <script>
 export default {
   emits: ['closeWindow'],
-  props: {
-    name
-  }
+  props: ['name']
 }
 </script>
 

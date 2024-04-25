@@ -29,16 +29,16 @@ export default {
   },
   methods: {
     async submitForm() {
-      let enrollmentUrl = 'http://localhost:8080/api/v1/enrollment/'
-      let res = await fetch(enrollmentUrl, {
+      let url = 'http://localhost:8080/api/v1/consultation/apply'
+      let res = await fetch(url, {
         method: 'POST',
         headers: {
           Authorization: 'Bearer ' + this.$store.getters.token
         },
-        body: {
-          mentorId: this.mentorId,
+        body: JSON.stringify({
+          expertId: this.mentorId,
           menteeQuestions: this.questions
-        }
+        })
       }).catch(console.error)
       if (!res.ok) {
         alert('failed')
@@ -57,6 +57,7 @@ export default {
 textarea {
   background-color: #00093c10;
   border-radius: 6px;
+  resize: vertical;
 }
 
 form {

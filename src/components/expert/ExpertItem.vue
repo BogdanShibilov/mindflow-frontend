@@ -1,49 +1,30 @@
 <template>
   <div id="item-wrapper">
     <div id="expert-info">
-      <p id="price-tag">{{ price }} тг</p>
+      <p id="price-tag">{{ expert.price }} тг</p>
       <div id="name-and-speciality">
-        <h3>{{ name }}</h3>
-        <p>{{ field }}</p>
+        <h3>{{ expert.name }}</h3>
+        <p>{{ expert.professionalField }}</p>
       </div>
       <div id="expert-experience">
         <h3>Опыт:</h3>
-        <p>
-          {{ experience }}
-        </p>
+        <p>{{ expert.experienceDescription }}</p>
       </div>
       <router-link :to="profileLink">Открыть профиль</router-link>
     </div>
     <div id="img-wrapper">
-      <img src="../../assets/images/person_image_placeholder.png" />
+      <img src="../../assets/images/person-image-placeholder.png" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['id', 'price', 'experience'],
-  data() {
-    return {
-      name: '',
-      field: ''
-    }
-  },
+  props: ['expert'],
   computed: {
     profileLink() {
-      return this.$route.path + '/' + this.id
+      return this.$route.path + '/' + this.expert.userId
     }
-  },
-  async created() {
-    let userUrl = 'http://localhost:8080/api/v1/user/' + this.id
-    let res = await fetch(userUrl).catch(console.error)
-    const data = await res.json()
-    this.name = data.name
-
-    let userDetailsUrl = 'http://localhost:8080/api/v1/user/userdetails/' + this.id
-    res = await fetch(userDetailsUrl).catch(console.error)
-    const userDetailsData = await res.json()
-    this.field = userDetailsData.ProfessionalField
   }
 }
 </script>
@@ -65,7 +46,6 @@ export default {
   padding: 40px;
   border-radius: 32px;
   column-gap: 100px;
-  margin-top: 4vh;
 }
 
 #expert-info {

@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  emits: ['closeWindow'],
   data() {
     return {
       help: '',
@@ -60,24 +61,7 @@ export default {
       }
       this.didSubmit = true
       this.$emit('closeWindow')
-    },
-    async checkSubmit() {
-      if (!this.didSubmit) {
-        let url = 'http://localhost:8080/api/v1/experts/' + this.token
-        let headers = new Headers()
-        headers.append('Content-Type', 'application/json')
-        const res = await fetch(url, {
-          method: 'GET',
-          headers
-        })
-        if (res.ok) {
-          this.didSubmit = true
-        }
-      }
     }
-  },
-  created() {
-    this.checkSubmit()
   }
 }
 </script>

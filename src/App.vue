@@ -10,7 +10,6 @@ import { RouterView } from 'vue-router'
 export default {
   created() {
     this.$store.dispatch('trySignIn')
-    console.log('is logged in: ' + this.$store.getters.isAuthenticated)
   }
 }
 </script>

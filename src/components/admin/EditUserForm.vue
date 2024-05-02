@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     async submitForm() {
-      let url = 'http://localhost:8080/api/v1/users/forceupdateuserprofile'
+      let url = import.meta.env.VITE_API_URL + '/users/forceupdateuserprofile'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

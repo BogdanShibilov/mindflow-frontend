@@ -53,7 +53,7 @@ export default {
   methods: {
     async deleteUser(index) {
       let user = this.users[index]
-      let url = 'http://localhost:8080/api/v1/users'
+      let url = import.meta.env.VITE_API_URL + '/users'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)
@@ -85,7 +85,7 @@ export default {
       this.loadUsersData()
     },
     async loadUsersData() {
-      let url = 'http://localhost:8080/api/v1/users'
+      let url = import.meta.env.VITE_API_URL + '/users'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

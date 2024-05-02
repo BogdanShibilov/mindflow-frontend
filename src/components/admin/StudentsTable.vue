@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     async loadConsultApplications() {
-      let url = 'http://localhost:8080/api/v1/consultation'
+      let url = import.meta.env.VITE_API_URL + '/consultation'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)
@@ -67,7 +67,8 @@ export default {
       this.applications = data
     },
     async rejectConsult(index) {
-      let url = 'http://localhost:8080/api/v1/consultation/reject/' + this.applications[index].Uuid
+      let url =
+        import.meta.env.VITE_API_URL + '/consultation/reject/' + this.applications[index].Uuid
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

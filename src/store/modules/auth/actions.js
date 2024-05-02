@@ -4,7 +4,7 @@ let timer
 
 export default {
   async signIn(context, payload) {
-    let signInUrl = 'http://localhost:8080/api/v1/auth/emailsignin'
+    let signInUrl = import.meta.env.VITE_API_URL + '/auth/emailsignin'
 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
@@ -48,7 +48,7 @@ export default {
   },
 
   async signUp(context, payload) {
-    let signUpUrl = 'http://localhost:8080/api/v1/auth/signup'
+    let signUpUrl = import.meta.env.VITE_API_URL + '/v1/auth/signup'
 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')

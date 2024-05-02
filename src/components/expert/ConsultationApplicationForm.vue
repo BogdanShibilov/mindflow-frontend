@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async submitForm() {
-      let url = 'http://localhost:8080/api/v1/consultation/apply'
+      let url = import.meta.env.VITE_API_URL + '/consultation/apply'
       let res = await fetch(url, {
         method: 'POST',
         headers: {

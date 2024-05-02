@@ -70,7 +70,7 @@ export default {
       this.isConsultApplicationFormVisible = !this.isConsultApplicationFormVisible
     },
     async loadExpertData() {
-      let url = 'http://localhost:8080/api/v1/experts/' + this.id
+      let url = import.meta.env.VITE_API_URL + '/experts/' + this.id
       let headers = new Headers()
       headers.append('Accept', 'application/json')
       const res = await fetch(url, {

@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async loadExpertsData() {
-      let url = 'http://localhost:8080/api/v1/experts?status=0'
+      let url = import.meta.env.VITE_API_URL + '/experts?status=0'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)
@@ -56,7 +56,7 @@ export default {
     },
     async changeExpertStatus(index, status) {
       let expert = this.experts[index]
-      let url = 'http://localhost:8080/api/v1/experts/status'
+      let url = import.meta.env.VITE_API_URL + '/v1/experts/status'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

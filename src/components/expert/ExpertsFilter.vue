@@ -4,7 +4,7 @@
       <PriceRange v-model:minprice="minprice" v-model:maxprice="maxprice" />
     </TheDropdown>
     <hr />
-    <button>Показать результаты</button>
+    <button @click="loadFilteredExperts">Показать результаты</button>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ import TheDropdown from './TheDropdown.vue'
 import PriceRange from './PriceRange.vue'
 
 export default {
+  emits: ['filteredExperts'],
   components: {
     TheDropdown,
     PriceRange
@@ -25,14 +26,28 @@ export default {
   },
   methods: {
     async loadFilterData() {
-      let url = 'http://localhost:8080/api/v1/experts/filterdata'
+      let url = import.meta.env.VITE_API_URL + '/experts/filterdata'
+      const res = await fetch(url, {
+        method: 'GET'
+      })
+      const data = await res.json()
+      this.minprice = data.minMaxPrice.minPrice
+      this.maxprice = data.minMaxPrice.maxPrice
+    },
+    async loadFilteredExperts() {
+      let url =
+        import.meta.env.VITE_API_URL +
+        '/experts/approved' +
+        '?minprice=' +
+        this.minprice +
+        '&maxprice=' +
+        this.maxprice
       const res = await fetch(url, {
         method: 'GET'
       })
       const data = await res.json()
       console.log(data)
-      this.minprice = data.minMaxPrice.minPrice
-      this.maxprice = data.minMaxPrice.maxPrice
+      this.$emit('filteredExperts', data)
     }
   },
   created() {

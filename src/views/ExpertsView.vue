@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <TheHeader id="header" />
-    <ExpertsFilter id="filter" />
+    <ExpertsFilter id="filter" @filteredExperts="getFilteredExperts" />
     <ExpertList id="expert-list" :experts="experts" />
     <TheFooter id="footer" />
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     async loadExpertsData() {
-      let expertsUrl = 'http://localhost:8080/api/v1/experts/approved'
+      let expertsUrl = import.meta.env.VITE_API_URL + '/experts/approved'
       let headers = new Headers()
       headers.append('Accept', 'application/json')
 
@@ -44,6 +44,9 @@ export default {
       }
 
       this.experts = responseData
+    },
+    getFilteredExperts(data) {
+      this.experts = data
     }
   },
   created() {

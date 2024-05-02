@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async loadData() {
-      let url = 'http://localhost:8080/api/v1/consultation/' + this.consult.Uuid
+      let url = import.meta.env.VITE_API_URL + '/consultation/' + this.consult.Uuid
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)
@@ -58,7 +58,7 @@ export default {
       const consultData = await conultRes.json()
       console.log(consultData)
 
-      url = 'http://localhost:8080/api/v1/users/' + consultData.MenteeUuid
+      url = import.meta.env.VITE_API_URL + '/users/' + consultData.MenteeUuid
       const menteeRes = await fetch(url, {
         method: 'GET',
         headers
@@ -67,7 +67,7 @@ export default {
       console.log(menteeData)
       this.menteeName = menteeData.name
 
-      url = 'http://localhost:8080/api/v1/users/' + consultData.ExpertUuid
+      url = import.meta.env.VITE_API_URL + '/users/' + consultData.ExpertUuid
       const expertRes = await fetch(url, {
         method: 'GET',
         headers
@@ -77,7 +77,7 @@ export default {
       console.log(expertData)
     },
     async submitForm() {
-      let url = 'http://localhost:8080/api/v1/consultation/meeting'
+      let url = import.meta.env.VITE_API_URL + '/consultation/meeting'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

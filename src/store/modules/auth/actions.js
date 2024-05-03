@@ -48,7 +48,7 @@ export default {
   },
 
   async signUp(context, payload) {
-    let signUpUrl = import.meta.env.VITE_API_URL + '/v1/auth/signup'
+    let signUpUrl = import.meta.env.VITE_API_URL + '/auth/signup'
 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')

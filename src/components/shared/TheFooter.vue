@@ -18,6 +18,7 @@
       <h1>Legal</h1>
       <a href="">Terms & conditions</a>
       <a href="">Privacy Policy</a>
+      <router-link to="/admin">ADMIN PART</router-link>
     </div>
   </footer>
 </template>

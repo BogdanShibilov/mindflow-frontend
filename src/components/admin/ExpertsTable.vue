@@ -51,12 +51,12 @@ export default {
         const error = new Error(data.error || 'Failed to get users.')
         throw error
       }
-      console.log(data)
+
       this.experts = data
     },
     async changeExpertStatus(index, status) {
       let expert = this.experts[index]
-      let url = import.meta.env.VITE_API_URL + '/v1/experts/status'
+      let url = import.meta.env.VITE_API_URL + '/experts/status'
       let headers = new Headers()
       headers.append('Content-Type', 'application/json')
       headers.append('authorization', 'Bearer ' + this.token)

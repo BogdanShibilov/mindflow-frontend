@@ -61,7 +61,29 @@ export default {
       }
       this.didSubmit = true
       this.$emit('closeWindow')
+    },
+    async didIAlreadyApply() {
+      let url = import.meta.env.VITE_API_URL + '/experts/alreadyapplied'
+      let headers = new Headers()
+      headers.append('Content-Type', 'application/json')
+      headers.append('authorization', 'Bearer ' + this.token)
+      const res = await fetch(url, {
+        method: 'GET',
+        headers
+      })
+
+      let data = await res.json()
+      if (!res.ok) {
+        let data = await res.json()
+        const error = new Error(data.error || 'Failed to check if already applied.')
+        throw error
+      }
+
+      this.didSubmit = data.alreadyApplied
     }
+  },
+  beforeMount() {
+    this.didIAlreadyApply()
   }
 }
 </script>

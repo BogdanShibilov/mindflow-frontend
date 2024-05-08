@@ -106,6 +106,8 @@ export default {
 table {
   border-collapse: collapse;
   letter-spacing: 1px;
+  width: 100%;
+  table-layout: fixed;
 }
 
 th {
@@ -115,6 +117,8 @@ th {
 td {
   font-family: 'Poppins Medium';
   color: #505050;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 th,
@@ -122,7 +126,7 @@ td {
   border-bottom: 1px solid rgb(160 160 160);
   padding: 8px 10px;
   text-align: center;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .schedule-btn,
@@ -146,6 +150,7 @@ td {
 
 .schedule-btn {
   background-color: #22ab6a;
+  margin-right: 10px;
 }
 
 .reject-btn::before {
@@ -160,7 +165,7 @@ td {
 }
 
 .btns {
-  display: flex;
   gap: 10px;
+  white-space: nowrap;
 }
 </style>

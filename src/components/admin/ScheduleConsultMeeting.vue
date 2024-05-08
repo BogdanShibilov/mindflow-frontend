@@ -6,7 +6,7 @@
     </div>
     <div class="input-wrapper">
       <label for="menteequestions">Вопросы студента</label>
-      <input id="menteequestions" type="text" v-model="questions" />
+      <textarea id="menteequestions" type="text" v-model="questions" rows="4"></textarea>
     </div>
     <div class="input-wrapper">
       <label for="expertname">Имя эксперта</label>
@@ -131,7 +131,8 @@ form {
   color: #515b6f;
 }
 
-.input-wrapper > input {
+.input-wrapper > input,
+textarea {
   font-family: 'Poppins Medium';
   min-height: 50px;
   max-height: 300px;
@@ -142,6 +143,10 @@ form {
   outline: none;
   border: 1px solid #d6ddeb;
   border-radius: 6px;
+}
+
+textarea {
+  resize: vertical;
 }
 
 #datetime {

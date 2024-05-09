@@ -4,7 +4,9 @@
     <ModalWindowBase v-if="isFormVisible" name="Заявка" @closeWindow="toggleFormVisible">
       <BecomeExpertForm @closeWindow="toggleFormVisible" />
     </ModalWindowBase>
-    <img src="../../assets/images/user-avatar-placeholder.png" @click="togglePopup" />
+    <router-link to="/profile">
+      <img src="../../assets/images/user-avatar-placeholder.png" />
+    </router-link>
     <PopupMenu v-if="isPopupVisible" />
   </div>
 </template>

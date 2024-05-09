@@ -34,6 +34,7 @@ export default {
     localStorage.setItem('userId', jwtData.uuid)
     localStorage.setItem('expiresAt', jwtData.exp)
     localStorage.setItem('email', jwtData.email)
+    localStorage.setItem('roles', jwtData.roles)
 
     let expiresIn = jwtData.exp - jwtData.iat
     timer = setTimeout(function () {
@@ -43,7 +44,8 @@ export default {
     context.commit('setUser', {
       token: responseData.accessToken,
       userId: jwtData.uuid,
-      email: jwtData.email
+      email: jwtData.email,
+      roles: jwtData.roles
     })
   },
 
@@ -85,6 +87,7 @@ export default {
     const userId = localStorage.getItem('userId')
     const expiresAt = localStorage.getItem('expiresAt')
     const email = localStorage.getItem('email')
+    const roles = localStorage.getItem('roles')
 
     const now = parseInt(new Date().getTime() / 1000)
     const expiresIn = +expiresAt - now
@@ -101,7 +104,8 @@ export default {
       context.commit('setUser', {
         token: token,
         userId: userId,
-        email: email
+        email: email,
+        roles: roles
       })
     }
   },
@@ -110,13 +114,15 @@ export default {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
     localStorage.removeItem('expiresAt')
+    localStorage.removeItem('roles')
 
     clearTimeout(timer)
 
     context.commit('setUser', {
       token: null,
       userId: null,
-      email: null
+      email: null,
+      roles: null
     })
   },
 

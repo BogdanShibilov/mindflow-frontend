@@ -23,7 +23,7 @@
     @closeWindow="toogleScheduleFormVisibility"
     name="Schedule"
   >
-    <ScheduleConsultMeeting :consult="currentlyScheduled" />
+    <ScheduleConsultMeeting :consult="currentlyScheduled" @formSubmitted="meetingScheduled" />
   </ModalWindowBase>
 </template>
 

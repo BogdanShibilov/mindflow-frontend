@@ -2,9 +2,11 @@
   <div class="container">
     <TheHeader id="header" />
     <div id="selectors">
-      <AdminSelector :currentlySelected="currentTab" @tabChange="changeTab" />
+      <ProfileSelector :currentlySelected="currentTab" @tabChange="changeTab" />
+      <AdminSelector v-if="isAdmin" :currentlySelected="currentTab" @tabChange="changeTab" />
     </div>
     <CardBase id="adminpanel">
+      <ScheduleTable v-if="currentTab == 'schedule'" />
       <h1 v-if="currentTab == 'users'">Users</h1>
       <UsersTable v-if="currentTab == 'users'" />
       <h1 v-if="currentTab == 'experts'">Experts</h1>
@@ -24,6 +26,8 @@ import UsersTable from '../components/admin/UsersTable.vue'
 import ExpertsTable from '../components/admin/ExpertsTable.vue'
 import StudentsTable from '../components/admin/StudentsTable.vue'
 import AdminSelector from '../components/admin/AdminSelector.vue'
+import ProfileSelector from '../components/profile/ProfileSelector.vue'
+import ScheduleTable from '../components/profile/ScheduleTable.vue'
 
 export default {
   components: {
@@ -33,11 +37,21 @@ export default {
     UsersTable,
     ExpertsTable,
     StudentsTable,
-    AdminSelector
+    AdminSelector,
+    ProfileSelector,
+    ScheduleTable
   },
   data() {
     return {
-      currentTab: 'users'
+      currentTab: 'profile'
+    }
+  },
+  computed: {
+    roles() {
+      return this.$store.getters.roles
+    },
+    isAdmin() {
+      return this.roles.indexOf('admin') > -1
     }
   },
   methods: {
@@ -85,5 +99,6 @@ export default {
   grid-row: 2;
   grid-column: 1;
   margin: 0 20%;
+  gap: 40px;
 }
 </style>

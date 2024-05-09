@@ -2,8 +2,8 @@
   <footer>
     <div id="project-whatever">
       <span id="project-name">Mindflow</span>
-      <span class="slogan">some text or company slogan</span>
-      <span class="slogan">text or company slogan</span>
+      <span class="slogan"></span>
+      <span class="slogan"></span>
       <div>
         <img src="../../assets/icons/telegram-icon.svg" alt="" srcset="" />
         <img src="../../assets/icons/instagram-icon.svg" alt="" srcset="" />

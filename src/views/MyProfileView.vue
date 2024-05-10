@@ -6,7 +6,9 @@
       <AdminSelector v-if="isAdmin" :currentlySelected="currentTab" @tabChange="changeTab" />
     </div>
     <CardBase id="adminpanel">
+      <MyProfile v-if="currentTab == 'profile'" />
       <ScheduleTable v-if="currentTab == 'schedule'" />
+      <MySettings v-if="currentTab == 'settings'" />
       <h1 v-if="currentTab == 'users'">Users</h1>
       <UsersTable v-if="currentTab == 'users'" />
       <h1 v-if="currentTab == 'experts'">Experts</h1>
@@ -28,6 +30,8 @@ import StudentsTable from '../components/admin/StudentsTable.vue'
 import AdminSelector from '../components/admin/AdminSelector.vue'
 import ProfileSelector from '../components/profile/ProfileSelector.vue'
 import ScheduleTable from '../components/profile/ScheduleTable.vue'
+import MyProfile from '../components/profile/MyProfile.vue'
+import MySettings from '../components/profile/MySettings.vue'
 
 export default {
   components: {
@@ -39,7 +43,9 @@ export default {
     StudentsTable,
     AdminSelector,
     ProfileSelector,
-    ScheduleTable
+    ScheduleTable,
+    MyProfile,
+    MySettings
   },
   data() {
     return {

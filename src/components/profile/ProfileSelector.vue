@@ -1,12 +1,24 @@
 <template>
   <div id="selector">
-    <p :class="{ selected: this.currentlySelected == 'profile' }" @click="emitTab('profile')">
+    <p
+      id="profile"
+      :class="{ selected: this.currentlySelected == 'profile' }"
+      @click="emitTab('profile')"
+    >
       Профиль
     </p>
-    <p :class="{ selected: this.currentlySelected == 'schedule' }" @click="emitTab('schedule')">
+    <p
+      id="schedule"
+      :class="{ selected: this.currentlySelected == 'schedule' }"
+      @click="emitTab('schedule')"
+    >
       Моё расписание
     </p>
-    <p :class="{ selected: this.currentlySelected == 'settings' }" @click="emitTab('settings')">
+    <p
+      id="settings"
+      :class="{ selected: this.currentlySelected == 'settings' }"
+      @click="emitTab('settings')"
+    >
       Настройки
     </p>
     <button @click="signOut">Logout</button>
@@ -57,11 +69,25 @@ p {
   background-color: #f0f0f0;
 }
 
-p::before {
+#profile::before {
   position: relative;
   top: 3px;
   right: 5px;
   content: url('../../assets/icons/dark-profile-icon.svg');
+}
+
+#schedule::before {
+  position: relative;
+  top: 3px;
+  right: 5px;
+  content: url('../../assets/icons/calendar-icon.svg');
+}
+
+#settings::before {
+  position: relative;
+  top: 3px;
+  right: 5px;
+  content: url('../../assets/icons/settings-icon.svg');
 }
 
 button {

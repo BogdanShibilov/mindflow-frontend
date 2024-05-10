@@ -4,9 +4,9 @@
       <img src="../../assets/images/person-image-placeholder.png" />
       <h1>{{ name }}</h1>
       <h2>{{ field }}</h2>
-      <h3>Опыт:</h3>
+      <h3>Experience:</h3>
       <p>{{ experience }}</p>
-      <h3>В чем помогу:</h3>
+      <h3>How can I help:</h3>
       <p>{{ help }}</p>
     </div>
     <div id="consult-info">
@@ -20,16 +20,16 @@
           :mentorId="this.mentorId"
         />
       </ModalWindowBase>
-      <h3>Консультация</h3>
+      <h3>Consultation</h3>
       <div class="row">
-        <span class="col1">Длительность</span>
-        <span class="col2">час</span>
+        <span class="col1">Duration</span>
+        <span class="col2">hour</span>
       </div>
       <div class="row">
-        <span class="col1">Стоимость</span>
+        <span class="col1">Price</span>
         <span class="col2">{{ price }} тг</span>
       </div>
-      <button @click="toggleConsultApplicationVisibility">Записаться</button>
+      <button @click="toggleConsultApplicationVisibility">Apply</button>
     </div>
   </main>
 </template>

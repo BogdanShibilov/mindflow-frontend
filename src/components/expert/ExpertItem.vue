@@ -7,10 +7,10 @@
         <p>{{ expert.professionalField }}</p>
       </div>
       <div id="expert-experience">
-        <h3>Опыт:</h3>
+        <h3>Experience:</h3>
         <p>{{ expert.experienceDescription }}</p>
       </div>
-      <router-link :to="profileLink">Открыть профиль</router-link>
+      <router-link :to="profileLink">Open profile</router-link>
     </div>
     <div id="img-wrapper">
       <img src="../../assets/images/person-image-placeholder.png" />

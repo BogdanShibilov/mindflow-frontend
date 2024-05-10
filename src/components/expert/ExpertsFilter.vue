@@ -1,10 +1,10 @@
 <template>
   <div id="filter-wrapper">
-    <TheDropdown header-name="Цена">
+    <TheDropdown header-name="Price">
       <PriceRange v-model:minprice="minprice" v-model:maxprice="maxprice" />
     </TheDropdown>
     <hr />
-    <button @click="loadFilteredExperts">Показать результаты</button>
+    <button @click="loadFilteredExperts">Show</button>
   </div>
 </template>
 

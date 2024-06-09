@@ -4,6 +4,24 @@
       <PriceRange v-model:minprice="minprice" v-model:maxprice="maxprice" />
     </TheDropdown>
     <hr />
+    <TheDropdown header-name="Professional Field">
+      <div id="speciality">
+        <div class="checkbox-wrapper" v-for="field in fieldsData" :key="field.professionalField">
+          <input
+            type="radio"
+            name="field"
+            :id="field.professionalField"
+            v-model="selectedField"
+            :value="field.professionalField"
+          />
+          <label :for="field.professionalField"
+            >{{ field.professionalField }}
+            <span class="field-count">{{ '(' + field.count + ')' }}</span></label
+          >
+        </div>
+      </div>
+    </TheDropdown>
+    <hr />
     <button @click="loadFilteredExperts">Show</button>
   </div>
 </template>
@@ -21,7 +39,9 @@ export default {
   data() {
     return {
       minprice: 0,
-      maxprice: 0
+      maxprice: 0,
+      fieldsData: null,
+      selectedField: null
     }
   },
   methods: {
@@ -33,6 +53,7 @@ export default {
       const data = await res.json()
       this.minprice = data.minMaxPrice.minPrice
       this.maxprice = data.minMaxPrice.maxPrice
+      this.fieldsData = data.proffFieldData
     },
     async loadFilteredExperts() {
       let url =
@@ -42,11 +63,13 @@ export default {
         this.minprice +
         '&maxprice=' +
         this.maxprice
+      if (this.selectedField) {
+        url = url + '&field=' + this.selectedField
+      }
       const res = await fetch(url, {
         method: 'GET'
       })
       const data = await res.json()
-      console.log(data)
       this.$emit('filteredExperts', data)
     }
   },
@@ -69,7 +92,7 @@ export default {
   row-gap: 15px;
 }
 
-.checkbox-wrapper input[type='checkbox'] {
+.checkbox-wrapper input[type='radio'] {
   width: 18px;
   height: 18px;
   border-color: #ababb5;
@@ -81,6 +104,10 @@ export default {
   color: #1c3554;
   font-family: 'Montserrat Semibold';
   font-size: 16px;
+}
+
+.field-count {
+  color: #808080;
 }
 
 hr {

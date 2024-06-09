@@ -3,7 +3,7 @@
     <router-link to="/">
       <img src="../../assets/images/mindflow-logo.png" />
     </router-link>
-    <SearchBar />
+    <SearchBar @searchedExperts="emitSearchedExperts" />
     <SignedIn v-if="isAuthenticated" />
     <SignedOut v-else />
   </header>
@@ -15,6 +15,7 @@ import SignedOut from '../header/SignedOut.vue'
 import SearchBar from '../header/SerachBar.vue'
 
 export default {
+  emits: ['searchedExperts'],
   components: {
     SignedIn,
     SearchBar,
@@ -23,6 +24,11 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters.isAuthenticated
+    }
+  },
+  methods: {
+    emitSearchedExperts(data) {
+      this.$emit('searchedExperts', data)
     }
   }
 }

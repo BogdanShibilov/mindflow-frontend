@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <TheHeader id="header" />
-    <ExpertsFilter id="filter" @filteredExperts="getFilteredExperts" />
+    <TheHeader id="header" @searchedExperts="setExperts" />
+    <ExpertsFilter id="filter" @filteredExperts="setExperts" />
     <ExpertList id="expert-list" :experts="experts" />
     <TheFooter id="footer" />
   </div>
@@ -45,7 +45,7 @@ export default {
 
       this.experts = responseData
     },
-    getFilteredExperts(data) {
+    setExperts(data) {
       this.experts = data
     }
   },

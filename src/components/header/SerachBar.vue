@@ -1,8 +1,30 @@
 <template>
   <span id="search-wrapper">
-    <input type="search" name="" id="" placeholder="Search" />
+    <input @keyup.enter="loadExperts" type="search" placeholder="Search" v-model="searchString" />
   </span>
 </template>
+
+<script>
+export default {
+  emits: ['searchedExperts'],
+  data() {
+    return {
+      searchString: ''
+    }
+  },
+  methods: {
+    async loadExperts() {
+      if (!this.searchString) return
+      let url = import.meta.env.VITE_API_URL + '/experts/approved' + '?name=' + this.searchString
+      const res = await fetch(url, {
+        method: 'GET'
+      })
+      const data = await res.json()
+      this.$emit('searchedExperts', data)
+    }
+  }
+}
+</script>
 
 <style scoped>
 input[type='search'] {

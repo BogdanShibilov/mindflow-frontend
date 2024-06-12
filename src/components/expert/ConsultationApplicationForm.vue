@@ -17,7 +17,7 @@
     >
   </form>
   <div id="already-submitted" v-else>
-    <p>Спасибо! В ближайшее время мы с вами свяжемся!</p>
+    <p>Вы уже отправили заявку!</p>
     <button @click="$emit('closeWindow')">Закрыть</button>
   </div>
 </template>

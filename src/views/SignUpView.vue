@@ -6,11 +6,11 @@
     <div id="signup-area-wrapper">
       <div>
         <h1>Регистрация</h1>
-        <button id="signup-with-google-btn" @click="Unimplemented">
+        <!-- <button id="signup-with-google-btn" @click="Unimplemented">
           <img src="../assets/icons/icon_google.svg" />
           Войти через Gmail
-        </button>
-        <TextBetweenLines text="или зарегистрируйтесь через почту" />
+        </button> -->
+        <TextBetweenLines text="Зарегистрируйтесь через почту" />
         <SignUpForm />
         <span>Уже есть аккаунт? <router-link to="signin">Войти</router-link></span>
         <span id="terms-text"

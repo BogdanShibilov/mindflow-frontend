@@ -6,11 +6,11 @@
     <div id="signin-area-wrapper">
       <div>
         <h1>Вход</h1>
-        <button id="signin-with-google-btn" @click="Unimplemented">
+        <!-- <button id="signin-with-google-btn" @click="Unimplemented">
           <img src="../assets/icons/icon_google.svg" />
           Войти через Gmail
-        </button>
-        <TextBetweenLines text="или войти через почту" />
+        </button> -->
+        <TextBetweenLines text="Войти через почту" />
         <SignInForm />
         <span>У вас ещё нет аккаунта? <router-link to="signup">Регистрация</router-link></span>
       </div>

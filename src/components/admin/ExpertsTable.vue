@@ -14,7 +14,7 @@
         <td>{{ expert.Email }}</td>
         <td>{{ expert.Phone }}</td>
         <td class="btns">
-          <button class="profile-btn">Profile</button>
+          <!-- <button class="profile-btn">Profile</button> -->
           <button class="accept-btn" @click="changeExpertStatus(index, 1)">Accept</button>
           <button class="reject-btn" @click="changeExpertStatus(index, 2)">Reject</button>
         </td>

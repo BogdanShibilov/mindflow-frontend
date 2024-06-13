@@ -1,7 +1,10 @@
 <template>
   <main>
     <div id="expert-info">
-      <img src="../../assets/images/person-image-placeholder.png" />
+      <img v-if="name == 'Alex Johnson'" src="../../assets/images/1.jpg" alt="" />
+      <img v-if="name == 'Rinat Karimov'" src="../../assets/images/4.jpg" alt="" />
+      <img v-if="name == 'Saule Akhmetova'" src="../../assets/images/5.jpg" alt="" />
+      <!-- <img v-else src="../../assets/images/person-image-placeholder.png" /> -->
       <h1>{{ name }}</h1>
       <h2>{{ field }}</h2>
       <h3>Experience:</h3>

@@ -12,9 +12,18 @@
       </div>
       <router-link :to="profileLink">Open profile</router-link>
     </div>
-    <div id="img-wrapper">
-      <img src="../../assets/images/person-image-placeholder.png" />
+    <div id="img-wrapper" v-if="expert.name == 'Alex Johnson'">
+      <img src="../../assets/images/1.jpg" />
     </div>
+    <div id="img-wrapper" v-if="expert.name == 'Rinat Karimov'">
+      <img src="../../assets/images/4.jpg" />
+    </div>
+    <div id="img-wrapper" v-if="expert.name == 'Saule Akhmetova'">
+      <img src="../../assets/images/5.jpg" />
+    </div>
+    <!-- <div id="img-wrapper">
+      <img src="../../assets/images/person-image-placeholder.png" />
+    </div> -->
   </div>
 </template>
 
@@ -37,6 +46,8 @@ export default {
 
 #img-wrapper img {
   border-radius: 50px;
+  max-width: 300px;
+  max-height: 400px;
 }
 
 #item-wrapper {

@@ -160,7 +160,7 @@
             <div class="application-status">
               <p class="applicants-info">
                 <span class="applied-count">5 applied</span>
-                <span class="capacity-info">of 10 capacity</span>
+                <span class="capacity-info"> of 10 capacity</span>
               </p>
               <div class="progress-bar">
                 <div class="progress-done"></div>
@@ -219,10 +219,14 @@
   align-items: center;
   background-color: var(--Neutrals-0, #fff);
   padding: 72px 60px;
+  max-width: 1192px;
+  align-self: center;
 }
 .container {
   width: 100%;
-  max-width: 1192px;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 1192px; */
 }
 .content-wrapper {
   display: flex;
@@ -368,12 +372,16 @@
     sans-serif;
 }
 .job-listing {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
   padding: 24px;
   border: 1px solid rgba(214, 221, 235, 1);
+  border-radius: 10px;
   background-color: var(--Neutrals-0, #fff);
+  max-width: 1192px;
+  align-self: center;
 }
 
 @media (max-width: 991px) {
@@ -441,7 +449,11 @@
   background-color: var(--Brands-Primary, #4640de);
   padding: 14px 56px;
   font-family: Epilogue, sans-serif;
+  font-size: 20px;
+  color: white;
   white-space: nowrap;
+  border: none;
+  border-radius: 20px;
 }
 
 @media (max-width: 991px) {

@@ -16,7 +16,11 @@
           alt="Company Logo"
           class="company-logo"
         />
-        <button class="apply-btn">Apply</button>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdr5YJyIIyEw5ECWugttRHENlaSADMyuoKdlFXlpcfDz3sf5A/viewform"
+        >
+          <button class="apply-btn">Apply</button>
+        </a>
       </div>
     </section>
     <section class="main-section">

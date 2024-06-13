@@ -5,6 +5,8 @@ import SignOutView from '../views/SignOutView.vue'
 import ExpertsView from '../views/ExpertsView.vue'
 import ConcreteExpertView from '@/views/ConcreteExpertView.vue'
 import MyProfileView from '../views/MyProfileView.vue'
+import InternshipsView from '@/views/InternshipsView.vue'
+import ApplyView from '@/views/ApplyView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +45,16 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: MyProfileView
+    },
+    {
+      path: '/internships',
+      name: 'InternshipsView',
+      component: InternshipsView
+    },
+    {
+      path: '/apply',
+      name: 'Apply',
+      component: ApplyView
     }
   ]
 })

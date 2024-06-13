@@ -4,6 +4,9 @@
       <img src="../../assets/images/mindflow-logo.png" />
     </router-link>
     <SearchBar @searchedExperts="emitSearchedExperts" />
+    <router-link to="/internships">
+      <button id="internships-link">Internships</button>
+    </router-link>
     <SignedIn v-if="isAuthenticated" />
     <SignedOut v-else />
   </header>
@@ -41,5 +44,17 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+#internships-link {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 140px;
+  height: 55px;
+  border-radius: 30px;
+  font-size: 20px;
+  background-color: #554dde;
+  color: #fefefe;
+  border: none;
 }
 </style>
